@@ -11,14 +11,12 @@
 Подробнее [здесь](task.md)
 
 ## Нефункциональные требования
-- ❌ В качестве хранилица использовать РСУБД(postgresql, sqllite)
-  postgresql можно запустить в docker:
-  docker run --rm -p 5432:5432 postgres:10.5
-- ❌ В качестве структуры веб сервиса - https://github.com/golang-standards/project-layout
-- ❌ Сервис можно реализовать как стандартной библиотекой(net/http), так и фреймворками gin, echo
-- ❌ Запросы в БД на pure sql, либо https://github.com/Masterminds/squirrel
-- ✅ Короткие ссылки должны основываться на id записи(sequence) в БД, переведённой в систему счисления с алфавитом [A-Za-z0-9]
-
-docker run --name=link-shorter-db -e POSTGRES_PASSWORD='qwerty' -p 5436:5432 -d --rm nouchka/sqlite3
-docker exec -it 5a9d643bdaf3 /bin/bash
-
+- ✅ В качестве хранилица использовать РСУБД(postgresql, sqllite)  
+  postgresql можно запустить в docker:  
+  docker run --rm -p 5432:5432 postgres:10.5  
+  **Выбран Sqlite3, файл создается в корне проекта и при достижении определенного в конфиге размера, пересоздается (чтобы не хостить БД и не перегружать тестовый стенд)**
+- ✅ В качестве структуры веб сервиса - https://github.com/golang-standards/project-layout
+- ✅ Сервис можно реализовать как стандартной библиотекой(net/http), так и фреймворками gin, echo  
+  **Выбран пакет net/http с нативной реализацией роутинга**
+- ✅ Запросы в БД на pure sql, либо https://github.com/Masterminds/squirrel
+- ❌ Короткие ссылки должны основываться на id записи(sequence) в БД, переведённой в систему счисления с алфавитом [A-Za-z0-9]
