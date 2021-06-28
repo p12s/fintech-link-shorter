@@ -1,6 +1,6 @@
 ![License](https://img.shields.io/github/license/p12s/fintech-link-shorter?style=plastic)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/p12s/fintech-link-shorter?style=plastic)
-<img src="https://github.com/p12s/fintech-link-shorter/workflows/lint-test-build/badge.svg?branch=master">
+<img src="https://github.com/p12s/fintech-link-shorter/workflows/lint-build/badge.svg?branch=master">
 
 **Внимание:** *Тестовое задание найдено на просторах github-а. Для обучения и тренировки, попробовал решить ее в меру своего понимания. На ревью не отправлял, за оптимальность не ручаюсь.*
 
