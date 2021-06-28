@@ -18,3 +18,7 @@
 - ❌ Сервис можно реализовать как стандартной библиотекой(net/http), так и фреймворками gin, echo
 - ❌ Запросы в БД на pure sql, либо https://github.com/Masterminds/squirrel
 - ✅ Короткие ссылки должны основываться на id записи(sequence) в БД, переведённой в систему счисления с алфавитом [A-Za-z0-9]
+
+docker run --name=link-shorter-db -e POSTGRES_PASSWORD='qwerty' -p 5436:5432 -d --rm nouchka/sqlite3
+docker exec -it 5a9d643bdaf3 /bin/bash
+

@@ -2,6 +2,9 @@
 .SILENT:
 .DEFAULT_GOAL := run
 
+s:
+	go run cmd/main.go
+
 build:
 	go mod download && go build cmd/main.go
 
