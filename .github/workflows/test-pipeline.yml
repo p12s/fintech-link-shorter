@@ -1,12 +1,12 @@
 name: lint-build
 
 env:
-  APP_NAME: "Test app"
+  APP_NAME: "Link shorter"
   SOME_VAR: "deploy-ver-${{ github.sha }}" # пример использования переменной с хешем коммита
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   golangci:
