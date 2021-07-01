@@ -1,7 +1,7 @@
 package service
 
 import (
-	shorter "github.com/p12s/fintech-link-shorter"
+	"github.com/p12s/fintech-link-shorter"
 	"github.com/p12s/fintech-link-shorter/pkg/repository"
 )
 

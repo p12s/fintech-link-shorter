@@ -12,9 +12,6 @@ test:
 	go test --short -coverprofile=cover.out -v ./...
 	make test.coverage
 
-create-migration:
-	migrate create -ext sql -dir ./schema -seq init
-
 test.coverage:
 	go tool cover -func=cover.out
 

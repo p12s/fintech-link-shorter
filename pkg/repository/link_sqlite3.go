@@ -4,19 +4,18 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/p12s/fintech-link-shorter"
-	"github.com/p12s/fintech-link-shorter/internal/notation"
 	"os"
 )
 
 type LinkSqlite3 struct {
 	db       *sql.DB
-	notation *notation.Convert
+	notation *Convert
 }
 
 func NewLinkSqlite3(db *sql.DB) *LinkSqlite3 {
 	return &LinkSqlite3{
 		db:       db,
-		notation: notation.NewConvert(),
+		notation: NewConvert(),
 	}
 }
 

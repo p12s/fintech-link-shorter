@@ -1,4 +1,4 @@
-package notation
+package repository
 
 import (
 	"math/big"

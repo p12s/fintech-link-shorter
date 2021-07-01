@@ -2,7 +2,7 @@ package handler
 
 import (
 	"encoding/json"
-	shorter "github.com/p12s/fintech-link-shorter"
+	"github.com/p12s/fintech-link-shorter"
 	"io/ioutil"
 	"log"
 	"net/http"

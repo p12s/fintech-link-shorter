@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 	shorter "github.com/p12s/fintech-link-shorter"
-	"github.com/p12s/fintech-link-shorter/pkg/repository"
+	//"github.com/p12s/fintech-link-shorter/pkg/repository"
 	"github.com/stretchr/testify/assert"
 	sqlmock "github.com/zhashkevych/go-sqlxmock"
 	"log"
@@ -22,7 +22,7 @@ func TestLinkSqlite3_Convert10To62(t *testing.T) {
 		}
 	}(db)
 
-	r := repository.NewLinkSqlite3(db)
+	r := NewLinkSqlite3(db)
 
 	type args struct {
 		id int

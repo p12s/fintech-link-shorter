@@ -1,4 +1,4 @@
-package notation
+package repository
 
 import (
 	"github.com/magiconair/properties/assert"
