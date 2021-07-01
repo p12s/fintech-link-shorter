@@ -7,6 +7,7 @@ import (
 
 type Link interface {
 	Create(longLink string) (shorter.UserLink, error)
+	Long(shortLink string) (shorter.UserLink, error)
 }
 
 type Repository struct {

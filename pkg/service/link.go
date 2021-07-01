@@ -21,3 +21,12 @@ func (l *LinkService) Create(longLink string) (shorter.UserLink, error) {
 
 	return result, nil
 }
+
+func (l *LinkService) Long(shortLink string) (shorter.UserLink, error) {
+	result, err := l.repo.Long(shortLink)
+	if err != nil {
+		return shorter.UserLink{}, err
+	}
+
+	return result, nil
+}
