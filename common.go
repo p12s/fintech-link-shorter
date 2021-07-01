@@ -8,5 +8,5 @@ type Link struct {
 }
 
 type UserLink struct {
-	Url   string `json:"url" binding:"required"`
+	Url string `json:"url" binding:"required"`
 }

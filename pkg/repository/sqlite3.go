@@ -33,6 +33,11 @@ func NewSqlite3DB(config Config) (*sql.DB, error) {
 		return nil, err
 	}
 
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS link(id INTEGER PRIMARY KEY, short TEXT, long TEXT);")
+	if err != nil {
+		return nil, err
+	}
+
 	return db, nil
 }
 
@@ -49,5 +54,5 @@ func fileOverSized(dataSourceName string, maxFileSize int64) bool {
 	if os.IsNotExist(err) {
 		return false
 	}
-	return info.Size() >= maxFileSize
+	return info.Size() >= (maxFileSize * 1024 * 1024) // MegaByte
 }
