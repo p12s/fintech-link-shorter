@@ -29,7 +29,7 @@ func (l *LinkSqlite3) Create(longLink string) (shorter.UserLink, error) {
 	}
 
 	var linkId int64
-	createItemQuery := fmt.Sprintf("INSERT INTO %s (short, long) values (NULL, $1) RETURNING id", linkTable)
+	createItemQuery := fmt.Sprintf("INSERT INTO %s long values ($1) RETURNING id", linkTable)
 	row := tx.QueryRow(createItemQuery, longLink)
 	err = row.Scan(&linkId)
 	if err != nil {

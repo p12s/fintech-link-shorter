@@ -1,6 +1,15 @@
 package repository
 
-/*
+import (
+	"database/sql"
+	shorter "github.com/p12s/fintech-link-shorter"
+	"github.com/p12s/fintech-link-shorter/pkg/repository"
+	"github.com/stretchr/testify/assert"
+	sqlmock "github.com/zhashkevych/go-sqlxmock"
+	"log"
+	"testing"
+)
+
 func TestLinkSqlite3_Convert10To62(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	if err != nil {
@@ -13,12 +22,11 @@ func TestLinkSqlite3_Convert10To62(t *testing.T) {
 		}
 	}(db)
 
-	r := NewLinkSqlite3(db)
-	fmt.Println(r)
+	r := repository.NewLinkSqlite3(db)
 
 	type args struct {
-		listId int
-		item   shorter.UserLink
+		id int
+		item   shorter.Link
 	}
 	type mockBehavior func(args args, id int)
 
@@ -32,20 +40,21 @@ func TestLinkSqlite3_Convert10To62(t *testing.T) {
 		{
 			name: "Ok",
 			input: args{
-				listId: 1,
-				item: shorter.UserLink{
-					Url: "https://www.golangprograms.com/example-to-handle-get-and-post-request-in-golang.html",
+				id: 1,
+				item: shorter.Link{
+					Id: 1,
+					Long: "https://www.golangprograms.com/example-to-handle-get-and-post-request-in-golang.html",
+					Short: "",
 				},
 			},
-			want: 2,
+			want: 1,
 			mock: func(args args, id int) {
-				/*mock.ExpectBegin()
+				mock.ExpectBegin()
 
-				rows := sqlmock.NewRows([]string{"id"}).AddRow(id)
-				mock.ExpectQuery("INSERT INTO todo_items").
-					WithArgs(args.item.Title, args.item.Description).WillReturnRows(rows)
+				rows := sqlmock.NewRows([]string{"id", "long", "short"}).AddRow(args.item.Id, args.item.Long, args.item.Short)
+				mock.ExpectQuery("INSERT INTO link").WithArgs(args.item.Long).WillReturnRows(rows)
 
-				mock.ExpectExec("INSERT INTO lists_items").WithArgs(args.listId, id).
+				mock.ExpectExec("INSERT INTO link").WithArgs(args.item.Long).
 					WillReturnResult(sqlmock.NewResult(1, 1))
 
 				mock.ExpectCommit()
@@ -57,7 +66,7 @@ func TestLinkSqlite3_Convert10To62(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			tt.mock(tt.input, tt.want)
 
-			got, err := r.Create(tt.input.listId, tt.input.item)
+			got, err := r.Create(tt.input.item.Long)
 			if tt.wantErr {
 				assert.Error(t, err)
 			} else {
@@ -68,4 +77,3 @@ func TestLinkSqlite3_Convert10To62(t *testing.T) {
 		})
 	}
 }
-*/
