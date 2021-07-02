@@ -1,0 +1,29 @@
+basePath: /
+host: localhost:80
+info:
+  contact: {}
+  description: API Server for link shorter application
+  title: Link shorter API
+  version: 0.0.1
+paths:
+  /long:
+    post:
+      consumes:
+      - application/json
+      description: get long link
+      operationId: get-long-link
+      produces:
+      - application/json
+      tags:
+      - long
+  /short:
+    post:
+      consumes:
+      - application/json
+      description: get short link
+      operationId: get-short-link
+      produces:
+      - application/json
+      tags:
+      - short
+swagger: "2.0"

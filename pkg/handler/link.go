@@ -8,6 +8,16 @@ import (
 	"net/http"
 )
 
+// Short @Summary Short
+// @Tags short
+// @Description Getting a short link by a long one
+// @ID get-short-link
+// @Accept  json
+// @Produce  json
+// @Param input body shorter.UserLink true "descr long link"
+// @Success 200 {string} string "https://p12s.ru/1b"
+
+// @Router /short [post]
 func (h *Handler) Short(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		http.Error(w, "Error: only POST method is supported.", http.StatusBadRequest)
@@ -38,6 +48,16 @@ func (h *Handler) Short(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Long @Summary Long
+// @Tags long
+// @Description Getting a long link from a short one
+// @ID get-long-link
+// @Accept  json
+// @Produce  json
+// @Param input body shorter.UserLink true "descr long link 2"
+// @Success 200 {string} string "https://www.golangprograms.com/example-to-handle-get-and-post-request-in-golang.html"
+
+// @Router /long [post]
 func (h *Handler) Long(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		http.Error(w, "Error: only POST method is supported.", http.StatusBadRequest)

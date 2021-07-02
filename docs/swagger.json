@@ -1,0 +1,43 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API Server for link shorter application",
+        "title": "Link shorter API",
+        "contact": {},
+        "version": "0.0.1"
+    },
+    "host": "localhost:80",
+    "basePath": "/",
+    "paths": {
+        "/long": {
+            "post": {
+                "description": "get long link",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "long"
+                ],
+                "operationId": "get-long-link"
+            }
+        },
+        "/short": {
+            "post": {
+                "description": "get short link",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "short"
+                ],
+                "operationId": "get-short-link"
+            }
+        }
+    }
+}

@@ -9,13 +9,24 @@ import (
 	"github.com/p12s/fintech-link-shorter/pkg/service"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	httpSwagger "github.com/swaggo/http-swagger"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	//"github.com/swaggo/swag"
+	//"github.com/swaggo/swag/swaggerFiles"
+
+	_ "github.com/p12s/fintech-link-shorter/docs"
 )
 
+// @title Link shorter API
+// @version 0.0.1
+// @description API Server for link shorter application
+// @host localhost:80
+// @BasePath /swagger/index.html
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {
@@ -72,9 +83,8 @@ type Server struct {
 func (s *Server) Run(port string, handler handler.Handler) error {
 	http.HandleFunc("/long", handler.Long)
 	http.HandleFunc("/short", handler.Short)
-
+	http.HandleFunc("/swagger/", httpSwagger.WrapHandler)
 	http.NewServeMux()
-
 	s.httpServer = &http.Server{
 		Addr:           ":" + port,
 		MaxHeaderBytes: 1 << 20, // 1 MB
