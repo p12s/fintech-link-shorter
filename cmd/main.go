@@ -16,17 +16,25 @@ import (
 	"syscall"
 	"time"
 
-	//"github.com/swaggo/swag"
-	//"github.com/swaggo/swag/swaggerFiles"
-
 	_ "github.com/p12s/fintech-link-shorter/docs"
 )
 
 // @title Link shorter API
 // @version 0.0.1
-// @description API Server for link shorter application
+// @description This is an API Server for link shorter
+
 // @host localhost:80
-// @BasePath /swagger/index.html
+// @BasePath /
+// @query.collection.format multi
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @termsOfService http://swagger.io/terms/
+
+// @x-extension-openapi {"example": "value on a json format"}
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 	if err := initConfig(); err != nil {

@@ -1,8 +1,28 @@
 basePath: /
+definitions:
+  handler.errorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  shorter.UserLink:
+    properties:
+      url:
+        type: string
+    required:
+    - url
+    type: object
 host: localhost:80
 info:
-  contact: {}
-  description: API Server for link shorter application
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is an API Server for link shorter
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
   title: Link shorter API
   version: 0.0.1
 paths:
@@ -10,20 +30,78 @@ paths:
     post:
       consumes:
       - application/json
-      description: get long link
+      description: Getting a long link from a short one
       operationId: get-long-link
+      parameters:
+      - description: short link
+        in: body
+        name: url
+        required: true
+        schema:
+          $ref: '#/definitions/shorter.UserLink'
       produces:
       - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shorter.UserLink'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
       tags:
       - long
   /short:
     post:
       consumes:
       - application/json
-      description: get short link
+      description: Getting a short link by a long one
       operationId: get-short-link
+      parameters:
+      - description: long link
+        in: body
+        name: url
+        required: true
+        schema:
+          $ref: '#/definitions/shorter.UserLink'
       produces:
       - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/shorter.UserLink'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
       tags:
       - short
 swagger: "2.0"
+x-extension-openapi:
+  example: value on a json format
