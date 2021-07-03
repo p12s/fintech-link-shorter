@@ -31,7 +31,7 @@ make s  # s - server
 ```
 Документация должна открыться по адресу:  
 http://localhost:80/swagger/index.html  
-Экспортированная коллекция postman [здесь](postman/fintech-link-shorter.postman_collection.json):  
+Экспортированная коллекция postman [здесь](postman/fintech-link-shorter.postman_collection.json)    
 
 
 ## Дополнительные улучшения
