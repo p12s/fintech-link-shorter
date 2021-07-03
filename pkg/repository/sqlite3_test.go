@@ -9,18 +9,18 @@ import (
 
 func TestNotation_FileExists(t *testing.T) {
 	tests := []struct {
-		name        string
-		filePath string
+		name       string
+		filePath   string
 		fileExists bool
 	}{
 		{
-			name:        "Detect an existing file",
-			filePath: "./sqlite3_test.go",
+			name:       "Detect an existing file",
+			filePath:   "./sqlite3_test.go",
 			fileExists: true,
 		},
 		{
-			name:        "Does not detect a non-existent file",
-			filePath: "./no-exists-file.db",
+			name:       "Does not detect a non-existent file",
+			filePath:   "./no-exists-file.db",
 			fileExists: false,
 		},
 	}
@@ -37,41 +37,41 @@ func TestNotation_FileOverSized(t *testing.T) {
 	const FilePath = "./test-file-size.db"
 
 	tests := []struct {
-		name        string
-		fileSize int
-		filePath string
+		name           string
+		fileSize       int
+		filePath       string
 		needCreateFile bool
-		fileOverSized bool
+		fileOverSized  bool
 	}{
 		{
-			name:          "Not detect small sized file",
-			fileSize:      MaxFileSize * 1,
+			name:           "Not detect small sized file",
+			fileSize:       MaxFileSize * 1,
 			needCreateFile: false,
-			fileOverSized: false,
+			fileOverSized:  false,
 		},
 		{
-			name:          "Not detect small sized file",
-			fileSize:      MaxFileSize * 1024 * 1024 - 1,
+			name:           "Not detect small sized file",
+			fileSize:       MaxFileSize*1024*1024 - 1,
 			needCreateFile: true,
-			fileOverSized: false,
+			fileOverSized:  false,
 		},
 		{
-			name:          "Not detect equal sized file",
-			fileSize:      MaxFileSize * 1024 * 1024,
+			name:           "Not detect equal sized file",
+			fileSize:       MaxFileSize * 1024 * 1024,
 			needCreateFile: true,
-			fileOverSized: false,
+			fileOverSized:  false,
 		},
 		{
-			name:          "Detect over sized file",
-			fileSize:      MaxFileSize * 1024 * 1024 + 1,
+			name:           "Detect over sized file",
+			fileSize:       MaxFileSize*1024*1024 + 1,
 			needCreateFile: true,
-			fileOverSized: true,
+			fileOverSized:  true,
 		},
 		{
-			name:          "Detect over sized file",
-			fileSize:      MaxFileSize * 1024 * 1024 * 2,
+			name:           "Detect over sized file",
+			fileSize:       MaxFileSize * 1024 * 1024 * 2,
 			needCreateFile: true,
-			fileOverSized: true,
+			fileOverSized:  true,
 		},
 	}
 
@@ -88,7 +88,7 @@ func TestNotation_FileOverSized(t *testing.T) {
 				if err != nil {
 					log.Fatal("Failed to create output")
 				}
-				if _, err = fd.Write(make([]byte, test.fileSize, test.fileSize)); err != nil {
+				if _, err = fd.Write(make([]byte, test.fileSize)); err != nil {
 					log.Fatal("Write failed")
 				}
 
@@ -98,7 +98,7 @@ func TestNotation_FileOverSized(t *testing.T) {
 				}
 			}
 
-			assert.Equal(t, FileOverSized(FilePath, MaxFileSize * 1024 * 1024), test.fileOverSized)
+			assert.Equal(t, FileOverSized(FilePath, MaxFileSize*1024*1024), test.fileOverSized)
 
 			if test.needCreateFile {
 				if err := os.Remove(FilePath); err != nil {
