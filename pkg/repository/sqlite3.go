@@ -18,7 +18,7 @@ type Config struct {
 // NewSqlite3DB - конструктор
 func NewSqlite3DB(config Config) (*sql.DB, error) {
 	// удаляем файл, если он превысил максимальный размер (чтобы тестовый стенд не разрастался)
-	if fileExists(config.DataSourceName) && fileOverSized(config.DataSourceName, config.MaxFileSize) {
+	if FileExists(config.DataSourceName) && FileOverSized(config.DataSourceName, config.MaxFileSize) {
 		err := os.Remove(config.DataSourceName)
 		if err != nil {
 			return nil, err
@@ -43,7 +43,7 @@ func NewSqlite3DB(config Config) (*sql.DB, error) {
 	return db, nil
 }
 
-func fileExists(dataSourceName string) bool {
+func FileExists(dataSourceName string) bool {
 	info, err := os.Stat(dataSourceName)
 	if os.IsNotExist(err) {
 		return false
@@ -51,10 +51,10 @@ func fileExists(dataSourceName string) bool {
 	return !info.IsDir()
 }
 
-func fileOverSized(dataSourceName string, maxFileSize int64) bool {
+func FileOverSized(dataSourceName string, maxFileSize int64) bool {
 	info, err := os.Stat(dataSourceName)
 	if os.IsNotExist(err) {
 		return false
 	}
-	return info.Size() >= (maxFileSize * 1024 * 1024) // MegaByte
+	return info.Size() > maxFileSize // MegaByte
 }
