@@ -1,6 +1,6 @@
 ![License](https://img.shields.io/github/license/p12s/fintech-link-shorter?style=plastic)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/p12s/fintech-link-shorter?style=plastic)
-[![Coverage Status](https://img.shields.io/codecov/c/github/p12s/fintech-link-shorter/master.svg)](https://codecov.io/gh/p12s/fintech-link-shorter)
+[![Coverage Status](https://codecov.io/gh/p12s/fintech-link-shorter/branch/master/graph/badge.svg?token=4P04TA403S)](https://codecov.io/gh/p12s/fintech-link-shorter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/p12s/fintech-link-shorter)](https://goreportcard.com/report/github.com/p12s/fintech-link-shorter)
 <img src="https://github.com/p12s/fintech-link-shorter/workflows/lint-build/badge.svg?branch=master">
 
