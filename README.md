@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/p12s/fintech-link-shorter?style=plastic)
+![License](https://img.shields.io/github/license/p12s/fintech-link-shorter)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/p12s/fintech-link-shorter?style=plastic)
 [![Coverage Status](https://codecov.io/gh/p12s/fintech-link-shorter/branch/master/graph/badge.svg?token=4P04TA403S)](https://codecov.io/gh/p12s/fintech-link-shorter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/p12s/fintech-link-shorter)](https://goreportcard.com/report/github.com/p12s/fintech-link-shorter)
@@ -31,4 +31,5 @@
 ## Что можно усовершенствовать
 - вместо стандартного net/http-пакета попробовать [fasthttp](https://github.com/valyala/fasthttp)    
   у него меньше аллокаций памяти и быстрее скорость за счет использования кодогенерации вместо рефлекции (текущий этап моих знаний)  
+- в таблицу **link** добавить индексы для столбца **short** - получение длинной ссылки по ее короткой версии будет быстрее
 

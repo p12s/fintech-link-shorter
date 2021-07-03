@@ -10,6 +10,7 @@ type errorResponse struct {
 	Message string `json:"message"`
 }
 
+// NewErrorResponse - отправка json-форматированной ошибки
 func NewErrorResponse(w http.ResponseWriter, statusCode int, message string) {
 	logrus.Error(message)
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")

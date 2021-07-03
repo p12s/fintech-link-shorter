@@ -7,11 +7,14 @@ import (
 	"os"
 )
 
+// LinkSqlite3 - структура, содержащая ссылку на БД и конвертер системы счисления
+// конвертер используется при каждой записи длинной ссылки в таблицу для декодирования ее в короткую
 type LinkSqlite3 struct {
 	db       *sql.DB
 	notation *Convert
 }
 
+// NewLinkSqlite3 - конструктор структуры БД
 func NewLinkSqlite3(db *sql.DB) *LinkSqlite3 {
 	return &LinkSqlite3{
 		db:       db,
@@ -19,6 +22,7 @@ func NewLinkSqlite3(db *sql.DB) *LinkSqlite3 {
 	}
 }
 
+// Create - запись длинной ссылки в БД с ее конвертацией в короткую
 func (l *LinkSqlite3) Create(longLink string) (shorter.UserLink, error) {
 	userLink := shorter.UserLink{}
 
@@ -55,6 +59,7 @@ func (l *LinkSqlite3) Create(longLink string) (shorter.UserLink, error) {
 	}, tx.Commit()
 }
 
+// Long - получение длинной ссылки по ее короткой версии
 func (l *LinkSqlite3) Long(shortLink string) (shorter.UserLink, error) {
 	var link = shorter.Link{}
 

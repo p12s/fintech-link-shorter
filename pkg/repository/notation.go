@@ -6,10 +6,12 @@ import (
 
 const NOTATION = 62
 
+// Convert - конвертер 10-чной системы счисления в 62-ричную
 type Convert struct {
 	Notation map[int64]rune
 }
 
+// NewConvert - конструктор
 func NewConvert() *Convert {
 	return &Convert{}
 }

@@ -8,12 +8,14 @@ import (
 
 const linkTable = "link"
 
+// Config - конфигурация БД
 type Config struct {
 	DriverName     string
 	DataSourceName string
-	MaxFileSize    int64
+	MaxFileSize    int64 // максимальный размер файла, после которого произойдет его пересоздание
 }
 
+// NewSqlite3DB - конструктор
 func NewSqlite3DB(config Config) (*sql.DB, error) {
 	// удаляем файл, если он превысил максимальный размер (чтобы тестовый стенд не разрастался)
 	if fileExists(config.DataSourceName) && fileOverSized(config.DataSourceName, config.MaxFileSize) {

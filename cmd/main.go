@@ -60,7 +60,7 @@ func main() {
 	srv := new(Server)
 	go func() {
 		if err := srv.Run(viper.GetString("port"), *handlers); err != nil {
-			logrus.Fatalf("error occured while running http server: %s", err.Error())
+			logrus.Fatalf("error occurred while running http server: %s", err.Error())
 		}
 	}()
 
@@ -69,11 +69,11 @@ func main() {
 	<-quit
 
 	if err := srv.Shutdown(context.Background()); err != nil {
-		logrus.Errorf("error occured on server shutting down: %s", err.Error())
+		logrus.Errorf("error occurred on server shutting down: %s", err.Error())
 	}
 
 	if err := db.Close(); err != nil {
-		logrus.Errorf("error occured on db connection close: %s", err.Error())
+		logrus.Errorf("error occurred on db connection close: %s", err.Error())
 	}
 
 }
@@ -84,10 +84,12 @@ func initConfig() error {
 	return viper.ReadInConfig()
 }
 
+// Server - http.Server
 type Server struct {
 	httpServer *http.Server
 }
 
+// Run - запуск сервера, добавление хендлеров (в том числе хендлера для swagger)
 func (s *Server) Run(port string, handler handler.Handler) error {
 	http.HandleFunc("/long", handler.Long)
 	http.HandleFunc("/short", handler.Short)
@@ -103,6 +105,7 @@ func (s *Server) Run(port string, handler handler.Handler) error {
 	return s.httpServer.ListenAndServe()
 }
 
+// Shutdown - корректное завершение горутин
 func (s *Server) Shutdown(ctx context.Context) error {
 	return s.httpServer.Shutdown(ctx)
 }
